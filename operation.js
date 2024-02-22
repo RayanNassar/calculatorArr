@@ -1,6 +1,19 @@
+let operationArr = [];
+
+let parentOutputSmallValue = document.createElement('div');
+parentOutputSmallValue.classList.add('parentOutputSmallValue');
+document.querySelector('.calculator').append(parentOutputSmallValue)
+
+
+// let outPut = document.querySelector('.outputValue').value;
+
+let smallOutputValue = document.createElement('div');
+smallOutputValue.textContent = ''
+smallOutputValue.classList.add('smallOutputValue');
+parentOutputSmallValue.append(smallOutputValue)
+
 function operation() {
 
-	let operationArr = [];
 
 	let operationSambo = ['/', '*', '-', '+']
 
@@ -39,7 +52,7 @@ function operation() {
 			if (H.innerHTML == '=') {
 
 				if (document.querySelector('.smallOutputValue')) {
-					
+
 					document.querySelectorAll('.smallOutputValue, .parentOutputSmallValue').forEach(H => {
 
 						H.remove();
@@ -48,21 +61,11 @@ function operation() {
 
 				}
 
-				let parentOutputSmallValue = document.createElement('div');
-				parentOutputSmallValue.classList.add('parentOutputSmallValue');
-				document.querySelector('.calculator').append(parentOutputSmallValue)
 
-				
-				let outPut = document.querySelector('.outputValue').value ;
-				
-				let smallOutputValue = document.createElement('div');
-				smallOutputValue.textContent = outPut
-				smallOutputValue.classList.add('smallOutputValue');
-				parentOutputSmallValue.append(smallOutputValue)
 
 				document.querySelector('.outputValue').value = eval(operationArr.join(''))
 
-				while(operationArr.length > 0) {
+				while (operationArr.length > 0) {
 
 					operationArr.pop()
 
@@ -76,7 +79,7 @@ function operation() {
 
 			if (H.innerHTML == 'C') {
 
-				while(operationArr.length > 0) {
+				while (operationArr.length > 0) {
 
 					operationArr.pop()
 
@@ -93,7 +96,7 @@ function operation() {
 
 			console.log(operationArr)
 			if (H.innerHTML == '&gt;') {
-				
+
 				let arrNumber = []
 
 
@@ -123,14 +126,96 @@ function operation() {
 				document.querySelector('.outputValue').value *= 0
 
 				document.querySelector('.outputValue').value = arrNumber.join('')
-				
+
 			}
-			
+
 		})
-		
+
 	})
-	
-	
-	
+
 }
-export default operation;
+
+function keyboard() {
+
+	document.addEventListener('keydown', (H) => {
+
+		let operationSambo = ['/', '*', '-', '+']
+
+		if (document.querySelector('.outputValue').value == 0) {
+			document.querySelector('.outputValue').value = ''
+		}
+
+
+		for (let i of operationSambo) {
+
+			if (!isNaN(Number(H.key)) || i == H.key) {
+
+				document.querySelector('.outputValue').value += H.key;
+
+				operationArr.push(H.key);
+
+				break;
+
+			}
+
+		}
+
+		if (H.key == '=' || H.key == 'Enter') {
+
+
+			document.querySelector('.smallOutputValue').textContent = document.querySelector('.outputValue').value
+
+			document.querySelector('.outputValue').value = eval(operationArr.join(''))
+
+			while (operationArr.length > 0) {
+				operationArr.pop();
+			}
+			operationArr.push(document.querySelector('.outputValue').value)
+
+			console.log(operationArr)
+		}
+
+		if (H.key == 'Backspace') {
+
+
+			let arrNumber = []
+
+
+			// arrNumber.push()
+
+			let items = String(document.querySelector('.outputValue').value).split('').map(J => {
+
+				if (!isNaN(Number(J))) {
+					return Number(J)
+				}
+				else {
+					return J
+				}
+
+			})
+
+			for (let J of items) {
+
+				arrNumber.push(J);
+
+			}
+
+			arrNumber.pop();
+			operationArr.pop();
+
+
+			document.querySelector('.outputValue').value *= 0
+
+			document.querySelector('.outputValue').value = arrNumber.join('')
+
+
+
+
+		}
+
+
+	})
+
+}
+
+export { operation, keyboard };

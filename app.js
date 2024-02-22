@@ -1,6 +1,6 @@
 import Router from "./Router.js";
 import { main, animations } from "./body.js";
-import operation from "./operation.js";
+import {operation,keyboard} from "./operation.js";
 
 
 window.app = {};
@@ -48,3 +48,5 @@ main();
 animations();
 
 operation()
+
+keyboard()
