@@ -1,0 +1,27 @@
+.calculator {
+    width:30%;
+    height:90%;
+    display:grid;
+    grid-template-columns: repeat(4, auto);
+    grid-template-rows: repeat(10, auto);
+    justify-items: center;
+    align-items: center;
+    border: 1px solid black;
+    border-radius: 30px;
+    overflow : hidden;
+
+}
+.output {
+    grid-area:1/1/6/5;
+}
+.rowI,
+.rowII,
+.rowIII,
+.rowIV,
+.rowsV {
+    width: 100%;
+    height: 100%;
+    border-radius: 2px;
+    /* background-color: rgb(255, 255, 255) ; */
+}
+

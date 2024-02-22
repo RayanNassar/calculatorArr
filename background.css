@@ -1,0 +1,88 @@
+.calculator {
+    width : 25%;
+    height:95%;
+    display:grid;
+    grid-template-columns: repeat(4, 1fr);
+    grid-template-rows: repeat(9, 1fr);
+    border: 1px solid rgb(255, 255, 255, 0.4);
+    justify-items: center;
+    align-items: center;
+    border-radius: 27px;
+    overflow : hidden;
+    position: relative;
+}
+.output {
+    grid-area:1/1/5/5;
+}
+
+
+@media (max-width : 1115px) {
+
+    .calculator {
+        width: 25%;
+    }
+}
+
+@media (max-width : 900px) {
+
+    .calculator {
+        width: 30%;
+    }
+
+}
+
+@media (max-width : 730px) {
+
+    .calculator {
+        width: 40%;
+    }
+
+}
+
+@media (max-width : 540px) {
+
+    .calculator {
+        width: 50%;
+    }
+}
+.elementLineSplitParent {
+    grid-column: 1/5;
+    grid-row: 4;
+    width:90%;
+    height:80%;
+    display:flex;
+    justify-content: center;
+    align-items: center;
+}
+.elementLineSplitChild {
+    width:100%;
+    height: 1px;
+    background-color: white;
+    border-radius: 5px;
+    /* margin-top: 2px; */
+}
+
+.outputValue {
+    width:100%;
+    height: auto;
+    color:white;
+    background-color: transparent;
+    border:none;
+    font-size: 4rem;
+    grid-column : 1/5;
+    grid-row :3;
+}
+
+.parentOutputSmallValue {
+    grid-area:2/4;
+    width :100%;
+    height:100%;
+    display:flex;
+    justify-content: center;
+    align-items: end;
+}
+
+.smallOutputValue {
+    font-size: 1.9rem;
+    color:rgb(255, 255, 255, 0.5);
+}
