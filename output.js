@@ -11,7 +11,7 @@ function output () {
 
     let outputValue = document.createElement('input');
     outputValue.classList.add('outputValue');
-    outputValue.value = 0;
+    outputValue.value = ' ' + 0;
     document.querySelector('.calculator').append(outputValue);
 
 }

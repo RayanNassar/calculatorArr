@@ -41,6 +41,8 @@ function basic() {
 
     }
 
+    document.querySelector('.elementLineSplitParent').style.display = 'none'
+    document.querySelector('.elementLineSplitParent').style.gridArea = '1/4'
 
 
 }

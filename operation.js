@@ -24,7 +24,7 @@ function operation() {
 
 			if (document.querySelector('.outputValue').value == 0) {
 
-				document.querySelector('.outputValue').value = ''
+				document.querySelector('.outputValue').value = ' '
 
 			}
 
@@ -210,6 +210,20 @@ function keyboard() {
 
 
 
+
+		}
+
+		if (H.key == 'Delete') {
+
+			document.querySelector('.smallOutputValue').textContent = ''
+
+			document.querySelector('.outputValue').value = ' 0'
+
+			while (operationArr.length > 0) {
+				operationArr.pop()
+			}
+
+			console.log(operationArr)
 
 		}
 
